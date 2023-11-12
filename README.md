@@ -21,6 +21,7 @@ $ npm i @any-design/turnstile
 
 <script steup lang="ts">
 import Turnstile from '@any-design/turnstile';
+import '@any-design/turnstile/dist/main.css'; // if you want to use the default placeholder style
 </script>
 ```
 
