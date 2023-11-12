@@ -86,6 +86,7 @@ const placeholderStyle = computed(() => TurnstileSize[props.size]);
 
 const componentMounted = ref(false);
 const componentRendered = ref(false);
+const widgetId = ref('');
 
 const shouldShowComponent = computed(() => {
   if (!props.placeholder) {
@@ -133,7 +134,7 @@ const renderTurnstile = () => {
     throw new Error('Turnstile container is not rendered');
   }
   try {
-    window.turnstile?.render(containerRef.value, {
+    widgetId.value = window.turnstile?.render(containerRef.value, {
       ...turnstileOptions.value,
       callback: (response: string) => onVerify(response),
       'expired-callback': (e: any) => emit('expire', e),
@@ -162,7 +163,7 @@ const resetTurnstile = () => {
   if (!window.turnstile) {
     throw new Error('Turnstile is not loaded');
   }
-  window.turnstile.reset();
+  window.turnstile.reset(widgetId.value);
   emit('update:modelValue', '');
 };
 
@@ -176,16 +177,19 @@ const setupCallbackMethod = () => {
 };
 
 const injectScript = () => {
-  if (window.turnstile) {
+  // if the callback exists, overwrite it
+  setupCallbackMethod();
+
+  if (window.turnstile || document.querySelector('#turnstile-sdk')) {
     return;
   }
 
-  setupCallbackMethod();
-
   const script = document.createElement('script');
+  script.id = 'turnstile-sdk';
   script.src = `https://challenges.cloudflare.com/turnstile/v0/api.js?onload=${props.callbackName}`;
   script.async = true;
   script.defer = true;
+
   document.head.appendChild(script);
 };
 

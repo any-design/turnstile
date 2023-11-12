@@ -11,8 +11,8 @@ declare global {
           'error-callback': Function | void;
           'unsupported-callback': Function | void;
         },
-      ) => void;
-      reset: () => void;
+      ) => string;
+      reset: (widgetId: string) => void;
     };
     onloadTurnstileCallback?: () => void;
   }
