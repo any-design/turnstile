@@ -48,6 +48,12 @@ This component takes the following props:
 
 - `resetInterval` (type: `Number`, default: `295000`): The interval before automatically reset. Only enabled when `autoReset` is true.
 
+- `placeholder` (type: `Boolean`, default: `true`): Render a placeholder while the Turnstile is loading.
+
+- `loadingText` (type: `String`, default: `''`): The loading text which will be displayed in the placeholder.
+
+- `readyDelay`: (type: `Number`, default: `1000`): The ready event (also the actual render timing) will be delayed due to the Turnstile rendering mechanism.
+
 ### Events
 
 This component will emit the following events:
@@ -59,6 +65,8 @@ This component will emit the following events:
 - `error`: This is emitted when an error occurred during rendering or verifying.
 
 - `ready`: This is emitted when the Turnstile SDK is ready and the widget is rendered.
+
+- `unsupported`: This is emitted when the Turnstile reported that the browser is not supported.
 
 - `update:modelValue`: This is emitted when the modelValue updates. Often used in `v-model`.
 

@@ -9,6 +9,7 @@ declare global {
           callback: Function;
           'expired-callback': Function | void;
           'error-callback': Function | void;
+          'unsupported-callback': Function | void;
         },
       ) => void;
       reset: () => void;
