@@ -6,6 +6,24 @@ _Compatible with form in `@any-design/anyui`._
 
 ## Usage
 
+### Install
+
+```bash
+$ npm i @any-design/turnstile
+```
+
+### Import
+
+```vue
+<template>
+  <turnstile siteKey="SITE_KEY"></turnstile>
+</template>
+
+<script steup lang="ts">
+import Turnstile from '@any-design/turnstile';
+</script>
+```
+
 ### Props
 
 This component takes the following props:
