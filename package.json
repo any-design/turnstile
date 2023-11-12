@@ -1,9 +1,11 @@
 {
   "name": "@any-design/turnstile",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "files": [
     "dist"
   ],
+  "main": "./dist/turnstile.umd.js",
+  "module": "./dist/turnstile.mjs",
   "types": "./dist/main.d.ts",
   "scripts": {
     "dev": "vite",
